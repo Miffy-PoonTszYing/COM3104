@@ -4,58 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@null"
 
     tools:context=".Add">
-
-    <include
-        layout="@layout/mean_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Add Transaction"
-            android:textSize="30dp" />
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="30dp">
-
-            <TableRow
+            <TextView
+                android:id="@+id/Title"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingVertical="10dp">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:text="Add Transaction"
+                android:textSize="30dp" />
 
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp"
-                    android:text="HKD"
-                    android:textSize="25dp" />
-
-
-                <LinearLayout
+                <Space
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_expence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expense " />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Income" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </RadioGroup>
+
+            <TableLayout
+                android:id="@+id/Num_Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp">
+
+                <TableRow>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                     <TextView
                         android:id="@+id/textView4"
@@ -63,62 +84,123 @@
                         android:layout_height="wrap_content"
                         android:text="Amount" />
 
-                    <EditText
-                        android:id="@+id/et_amount"
+                </TableRow>
+
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:text="HKD"
+                        android:textSize="25dp" />
+
+                    <EditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@null"
                         android:ems="2"
                         android:inputType="numberDecimal"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
                         android:singleLine="true"
                         android:text="0"
                         android:textSize="25dp" />
-                </LinearLayout>
+                </TableRow>
 
-            </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TableRow
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:paddingVertical="10dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/calendar">
+
+                    </ImageView>
+
+                    <EditText
+                        android:id="@+id/et_amount2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:ems="2"
+                        android:inputType="date"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="10dp"
+                        android:singleLine="true"
+                        android:text="(dd/mm/yyyy)"
+                        android:textSize="25dp" />
+
+                </TableRow>
+            </TableLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/Save_clear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
                 android:paddingVertical="10dp">
 
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="10dp"
-                    android:text="HKD"
-                    android:textSize="25dp" />
+                <Button
+                    android:id="@+id/bt_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="horizontal" />
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/bt_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
 
-            </TableRow>
+            <include
+                android:id="@+id/meanbar"
+                layout="@layout/mean_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
-        </TableLayout>
-
-        <Button
-            android:id="@+id/Clear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Clear" />
-
-        <Button
-            android:id="@+id/Save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
     </LinearLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
