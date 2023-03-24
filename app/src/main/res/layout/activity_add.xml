@@ -128,7 +128,7 @@
                     </ImageView>
 
                     <EditText
-                        android:id="@+id/et_amount2"
+                        android:id="@+id/et_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -143,6 +143,8 @@
 
                 </TableRow>
             </TableLayout>
+
+
 
 
         </LinearLayout>
