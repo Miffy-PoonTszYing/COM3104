@@ -9,12 +9,13 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class Add extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account ;
-    EditText et_date ;
+    TextView et_date ;
     DatePickerDialog datePickerDialog;
 
 
