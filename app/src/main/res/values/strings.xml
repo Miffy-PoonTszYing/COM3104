@@ -1,4 +1,15 @@
 <resources>
    <string name="app_name">test</string>
+   <string-array name="category">
+      <item>Food</item>
+      <item>transportation</item>
+      <item>Bill</item>
+      <item>Pet</item>
+      <item>Salary</item>
+      <item>Gift</item>
+
+
+   </string-array>
+
 </resources>
 

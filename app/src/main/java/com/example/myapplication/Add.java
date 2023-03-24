@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +18,7 @@ import java.util.Calendar;
 
 public class Add extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account ;
-    TextView et_date ;
+    TextView et_date , et_category;
     DatePickerDialog datePickerDialog;
 
 
@@ -92,6 +95,47 @@ public class Add extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        et_category = findViewById(R.id.et_category);
+        et_category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Select Category");
+
+
+                String[] category = getResources().getStringArray(R.array.category);
+                int checkedItem = 1;
+                builder.setSingleChoiceItems(category, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.setNegativeButton("Cancel",null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
