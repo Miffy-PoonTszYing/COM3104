@@ -106,16 +106,17 @@ public class Add extends AppCompatActivity {
 
                 String[] category = getResources().getStringArray(R.array.category);
                 int checkedItem = 1;
+                int selectedItemId = 1;
                 builder.setSingleChoiceItems(category, checkedItem, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+                    public void onClick(DialogInterface dialog, int i) {
+                        et_category.setText(category[i]);
 
                     }
                 });
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 builder.setNegativeButton("Cancel",null);
