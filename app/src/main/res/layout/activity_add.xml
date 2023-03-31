@@ -30,6 +30,7 @@
                 android:textSize="30dp" />
 
             <RadioGroup
+                android:id="@+id/RG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -109,11 +110,11 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:ems="2"
+                        android:hint="0"
                         android:inputType="numberDecimal"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="10dp"
                         android:singleLine="true"
-                        android:text="0"
                         android:textSize="25dp" />
                 </TableRow>
 
@@ -166,11 +167,11 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:ems="2"
+                        android:hint="Note"
                         android:inputType="text"
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="10dp"
                         android:singleLine="true"
-                        android:text="Note"
                         android:textSize="20dp" />
 
                 </TableRow>

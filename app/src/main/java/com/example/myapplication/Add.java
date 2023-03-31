@@ -9,15 +9,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class Add extends AppCompatActivity {
-    ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account ;
+    ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account;
+    RadioGroup RG;
+    RadioButton rb_expence;
+    Button bt_clear;
+    EditText et_note, et_amount;
     TextView et_date , et_category;
     DatePickerDialog datePickerDialog;
 
@@ -32,6 +39,12 @@ public class Add extends AppCompatActivity {
         bt_home = findViewById(R.id.bt_home);
         bt_plan = findViewById(R.id.bt_plan);
         bt_account = findViewById(R.id.bt_account);
+        et_date = findViewById(R.id.et_date);
+        et_category = findViewById(R.id.et_category);
+        bt_clear = findViewById(R.id.bt_clear);
+        RG= findViewById(R.id.RG);
+        et_note = findViewById(R.id.et_note);
+        et_amount = findViewById(R.id.et_amount);
 
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +86,21 @@ public class Add extends AppCompatActivity {
 
             }
         });
+        bt_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RG.clearCheck();
+                et_date.setText("(dd/mm/yyyy)");
+                et_category.setText("Select category");
+                et_note.setText("");
+                et_amount.setText("");
 
-        et_date = findViewById(R.id.et_date);
+
+
+            }
+        });
+
+
         et_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +122,7 @@ public class Add extends AppCompatActivity {
             }
         });
 
-        et_category = findViewById(R.id.et_category);
+
         et_category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,8 +132,7 @@ public class Add extends AppCompatActivity {
 
                 String[] category = getResources().getStringArray(R.array.category);
                 int checkedItem = 1;
-                int selectedItemId = 1;
-                builder.setSingleChoiceItems(category, checkedItem, new DialogInterface.OnClickListener() {
+                builder.setSingleChoiceItems(category,checkedItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         et_category.setText(category[i]);
@@ -123,7 +148,17 @@ public class Add extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        });
+        }
+
+
+
+
+
+
+
+
+
+        );
 
 
 
