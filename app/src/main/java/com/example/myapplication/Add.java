@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -23,10 +25,11 @@ public class Add extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account;
     RadioGroup RG;
     RadioButton rb_expence;
-    Button bt_clear;
+    Button bt_clear,bt_save;
     EditText et_note, et_amount;
     TextView et_date , et_category;
     DatePickerDialog datePickerDialog;
+    DBOpenHelper myDb;
 
 
     @Override
@@ -45,6 +48,7 @@ public class Add extends AppCompatActivity {
         RG= findViewById(R.id.RG);
         et_note = findViewById(R.id.et_note);
         et_amount = findViewById(R.id.et_amount);
+        bt_save = findViewById(R.id.bt_save);
 
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +98,6 @@ public class Add extends AppCompatActivity {
                 et_category.setText("Select category");
                 et_note.setText("");
                 et_amount.setText("");
-
-
 
             }
         });
@@ -148,32 +150,24 @@ public class Add extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        }
+        });
 
 
+        myDb = new DBOpenHelper(this);
 
-
-
-
-
-
-
-        );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        bt_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    boolean result = myDb.insertData(et_amount.getText().toString(),et_category.getText().toString());
+                    Toast.makeText(Add.this,"Insertion = "+result, Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    Toast.makeText(Add.this,"No input",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+
 
 
 }

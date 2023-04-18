@@ -3,11 +3,18 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account ;
@@ -24,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         bt_home = findViewById(R.id.bt_home);
         bt_plan = findViewById(R.id.bt_plan);
         bt_account = findViewById(R.id.bt_account);
+
 
         bt_add.setOnClickListener(new OnClickListener() {
             @Override
@@ -61,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /******************* End OnClickListener for mean bar********************************/
+
+
 
 
     }
