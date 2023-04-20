@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -49,6 +50,7 @@ public class Add extends AppCompatActivity {
         et_note = findViewById(R.id.et_note);
         et_amount = findViewById(R.id.et_amount);
         bt_save = findViewById(R.id.bt_save);
+        rb_expence = findViewById(R.id.rb_expence);
 
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,12 +161,36 @@ public class Add extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    boolean result = myDb.insertData(et_amount.getText().toString(),et_category.getText().toString());
+
+                    boolean result ;
+                    Log.d("DEBUG","rb_expence.isChecked()= " + rb_expence.isChecked());
+
+                    if (rb_expence.isChecked()){
+                        result = myDb.insertData("Expense",
+                            et_amount.getText().toString(),
+                            et_date.getText().toString(),
+                            et_note.getText().toString(),
+                            et_category.getText().toString());
+                    }
+                    else {result = myDb.insertData("Income",
+                            et_amount.getText().toString(),
+                            et_date.getText().toString(),
+                            et_note.getText().toString(),
+                            et_category.getText().toString());
+                    }
+
+
+
                     Toast.makeText(Add.this,"Insertion = "+result, Toast.LENGTH_LONG).show();
                 }catch (Exception e){
                     Toast.makeText(Add.this,"No input",Toast.LENGTH_LONG).show();
                 }
+                Intent intent = new Intent(Add.this,Wallet.class);
+                startActivity(intent);
+
+
             }
+
         });
     }
 

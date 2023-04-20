@@ -7,17 +7,22 @@
     tools:context=".Wallet"
     android:background="@color/background">
 
-    <include
-        layout="@layout/mean_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="wallet"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="142dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv_show"
+            android:layout_width="match_parent"
+            android:layout_height="651dp" />
+
+        <include
+            layout="@layout/mean_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
