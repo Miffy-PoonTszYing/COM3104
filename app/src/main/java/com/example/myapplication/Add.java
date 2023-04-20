@@ -167,7 +167,7 @@ public class Add extends AppCompatActivity {
 
                     if (rb_expence.isChecked()){
                         result = myDb.insertData("Expense",
-                            et_amount.getText().toString(),
+                            "-"+et_amount.getText().toString(),
                             et_date.getText().toString(),
                             et_note.getText().toString(),
                             et_category.getText().toString());

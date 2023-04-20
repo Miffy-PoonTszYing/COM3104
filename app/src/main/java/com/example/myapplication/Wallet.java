@@ -96,7 +96,11 @@ public class Wallet extends AppCompatActivity {
                 index_note = cursor.getColumnIndex(DBOpenHelper.KEY_Note);
                 index_category = cursor.getColumnIndex(DBOpenHelper.KEY_Category);
 
-                str_row = cursor.getString(index_type)+"\n"+cursor.getInt(index_amount);
+                str_row = cursor.getString(index_date)
+                        +"\n"+cursor.getString(index_type)
+                        +"\n"+cursor.getString(index_category)
+                        +"\n"+cursor.getString(index_note)
+                        +"\n"+cursor.getInt(index_amount);
                 Log.d("DB: ", "row "+i+" = "+ str_row);
                 record.add(str_row);
                 cursor.moveToNext();
