@@ -111,8 +111,6 @@ public class Wallet extends AppCompatActivity {
             lv_show.setAdapter(adapter);
 
 
-
-
         }
 
 
