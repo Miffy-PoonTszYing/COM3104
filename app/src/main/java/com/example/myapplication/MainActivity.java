@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +17,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account ;
@@ -25,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
     ListView lv_summary;
 
 
+    ArrayList barArraylist;
+
+
+
+private void getData(int Exp,int Income){
+    barArraylist = new ArrayList();
+    barArraylist.add(new BarEntry(2f ,Exp));
+    barArraylist.add(new BarEntry(3f,Income));
+
+}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         bt_account = findViewById(R.id.bt_account);
         tv_total = findViewById(R.id.tv_total);
         lv_summary = findViewById(R.id.lv_summary);
+        BarChart barChart = findViewById(R.id.barchart);
+
 
 
         bt_add.setOnClickListener(new OnClickListener() {
@@ -76,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /******************* End OnClickListener for mean bar********************************/
+
+
+
 
         // Calculation of the expense
         myDb = new DBOpenHelper(this);
@@ -151,6 +181,58 @@ public class MainActivity extends AppCompatActivity {
             lv_summary.setAdapter(adapter);
             tv_total.setText(Integer.toString(total));
         }
+
+
+        if (resultCounts == 0 || !cursor.moveToFirst()){
+            Toast.makeText(MainActivity.this, "no data", Toast.LENGTH_LONG).show();
+            getData(0,0);
+        }else{
+            int index_type = 0;
+            int index_amount = 0;
+            ArrayList record = new ArrayList();
+            //Output value
+            int income = 0;
+            int expense = 0;
+            String type = null;
+
+            for(int i=0; i<resultCounts;i++){
+                index_type = cursor.getColumnIndex(DBOpenHelper.KEY_Type);
+                index_amount = cursor.getColumnIndex(DBOpenHelper.KEY_Amount);
+
+
+                type = cursor.getString(index_type);
+                switch (type){
+                    case "Income":
+                        income = income + cursor.getInt(index_amount);
+                        break;
+                    case "Expense":
+                        expense = expense + cursor.getInt(index_amount);
+                        break;
+                }
+                cursor.moveToNext();
+            }
+
+            getData(-expense,income);
+        }
+
+
+
+
+        BarDataSet barDataSet = new BarDataSet(barArraylist,"Expense & Income");
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+        barChart.getXAxis().setDrawGridLines(false);
+        barChart.getXAxis().setEnabled(false);
+        barChart.getDescription().setEnabled(false);
+        barChart.setTouchEnabled(false);
+
+
+
+
+
 
     }
 }
