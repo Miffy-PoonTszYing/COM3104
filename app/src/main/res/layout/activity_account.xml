@@ -4,34 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Account"
-    android:background="@color/background"
-    >
+    tools:context=".Wallet"
+    android:background="@color/background">
 
-    <include
-        layout="@layout/mean_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Account"
-            android:layout_gravity="center"/>
-        <Button
-            android:id="@+id/bt_display"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="display"/>
 
-        <ListView
-            android:id="@+id/lv_show"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="597dp" />
+            android:layout_height="wrap_content"
+            android:text="Account Summary"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balance of the Account"
+                android:textSize="30dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"/>
+        </TableRow>
+
+        <include
+            layout="@layout/mean_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
