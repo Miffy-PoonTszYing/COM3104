@@ -65,11 +65,11 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="#00FFFFFF"
+            android:contentDescription="Plan"
             android:cropToPadding="false"
             android:paddingHorizontal="20dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/file_invoice_dollar"
-            android:contentDescription="Plan"/>
+            app:srcCompat="@drawable/exchange_rate" />
 
         <ImageButton
             android:id="@+id/bt_account"

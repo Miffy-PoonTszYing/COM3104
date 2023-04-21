@@ -8,21 +8,21 @@
     android:background="@color/background">
 
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/lv_show"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="650dp"
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
-        <ListView
-            android:id="@+id/lv_show"
-            android:layout_width="match_parent"
-            android:layout_height="651dp" />
+    </ListView>
 
-        <include
-            layout="@layout/mean_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/mean_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
