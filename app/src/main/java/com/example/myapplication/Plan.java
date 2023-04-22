@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -32,6 +35,7 @@ public class Plan extends AppCompatActivity {
     Button bt_go;
     TextView tv_outputnum, tv_input_curr, tv_output_curr;
     Handler mHandler;
+    ImageView bt_tran;
     private static final String BASE_URL = "https://api.frankfurter.app/latest?";
 
     private static final String BASE= "base";
@@ -55,6 +59,8 @@ public class Plan extends AppCompatActivity {
         tv_outputnum = findViewById(R.id.outputnum);
         tv_input_curr = findViewById(R.id.input_curr);
         tv_output_curr = findViewById(R.id.output_curr);
+        bt_tran = findViewById(R.id.bt_tran);
+
 
         bt_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +102,72 @@ public class Plan extends AppCompatActivity {
 
             }
         });
+
+        bt_tran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String in = String.valueOf(tv_input_curr.getText());
+                String out = String.valueOf(tv_output_curr.getText());
+                tv_input_curr.setText(out);
+                tv_output_curr.setText(in);
+
+            }
+        });
+
+        tv_input_curr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Select Currency");
+
+
+                String[] category = getResources().getStringArray(R.array.currency);
+                int checkedItem = 1;
+                builder.setSingleChoiceItems(category,checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        tv_input_curr.setText(category[i]);
+
+                    }
+                });
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.setNegativeButton("Cancel",null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        tv_output_curr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Select Currency");
+
+
+                String[] category = getResources().getStringArray(R.array.currency);
+                int checkedItem = 1;
+                builder.setSingleChoiceItems(category,checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        tv_output_curr.setText(category[i]);
+
+                    }
+                });
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.setNegativeButton("Cancel",null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         bt_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
