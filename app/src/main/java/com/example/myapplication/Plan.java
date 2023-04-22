@@ -36,10 +36,9 @@ public class Plan extends AppCompatActivity {
     TextView tv_outputnum, tv_input_curr, tv_output_curr;
     Handler mHandler;
     ImageView bt_tran;
+
     private static final String BASE_URL = "https://api.frankfurter.app/latest?";
-
     private static final String BASE= "base";
-
     private static final String Symbols = "symbols";
 
 

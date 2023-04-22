@@ -21,10 +21,11 @@
             android:textSize="30dp"/>
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bt_csv"
-            android:text="Export CSV"/>
+            android:text="Export CSV"
+            android:layout_gravity="center"/>
 
 
         <RelativeLayout
