@@ -25,7 +25,7 @@ import java.util.Calendar;
 public class Add extends AppCompatActivity {
     ImageButton bt_add , bt_wallet ,bt_home, bt_plan, bt_account;
     RadioGroup RG;
-    RadioButton rb_expence;
+    RadioButton rb_expence ;
     Button bt_clear,bt_save;
     EditText et_note, et_amount;
     TextView et_date , et_category;
@@ -100,6 +100,8 @@ public class Add extends AppCompatActivity {
                 et_category.setText("Select category");
                 et_note.setText("");
                 et_amount.setText("");
+                rb_expence.setChecked(true);
+
 
             }
         });
